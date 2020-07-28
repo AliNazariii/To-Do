@@ -4,31 +4,38 @@ import TaskContext from '../../../TaskContext';
 
 function Task(props) {
     const taskContext = useContext(TaskContext);
-    let starColor = props.data.isPinned === true ? '#a62626' : '#7a7a7a'
-    let taskColor = props.data.color
+    let starColor = props.data.isPinned === true ? '#a62626' : '#7a7a7a';
+    let taskColor = props.data.color;
     return (
         <div className={Styles.Task} style={{ backgroundColor: taskColor }}>
             <div className={Styles.LeftBlock}>
                 <button onClick={(e) => {
-                            let currentState = props.data.isPinned
-                            let newTasks = taskContext.tasks
-                            newTasks[newTasks.findIndex((task) => task.key === props.data.key)].isPinned = !currentState
-                            localStorage.setItem('tasks', JSON.stringify(newTasks))
-                            taskContext.setTasks(JSON.parse(localStorage.getItem('tasks')))
+                            let currentState = props.data.isPinned;
+                            let newTasks = taskContext.tasks;
+                            newTasks[newTasks.findIndex((task) => task.key === props.data.key)].isPinned = !currentState;
+                            localStorage.setItem('tasks', JSON.stringify(newTasks));
+                            taskContext.setTasks(JSON.parse(localStorage.getItem('tasks')));
                         }}
                 >
-                    <i className="material-icons" style={{ fontSize: "20px", color: starColor }}>star</i>
+                    <i 
+                        className="material-icons" 
+                        style={{ fontSize: "20px", color: starColor }}
+                    >
+                            star
+                    </i>
                 </button>
                 <h5>{props.data.title}</h5>
             </div>
             <div className={Styles.RightBlock}>
                 <form>
-                    <input type="color" name="favcolor"
+                    <input 
+                        type="color" 
+                        name="favcolor"
                         onChange={(e) => {
-                            let newTasks = taskContext.tasks
-                            newTasks[newTasks.findIndex((task) => task.key === props.data.key)].color = e.target.value
-                            localStorage.setItem('tasks', JSON.stringify(newTasks))
-                            taskContext.setTasks(JSON.parse(localStorage.getItem('tasks')))
+                            let newTasks = taskContext.tasks;
+                            newTasks[newTasks.findIndex((task) => task.key === props.data.key)].color = e.target.value;
+                            localStorage.setItem('tasks', JSON.stringify(newTasks));
+                            taskContext.setTasks(JSON.parse(localStorage.getItem('tasks')));
                         }}
                     />
                 </form>
@@ -42,10 +49,10 @@ function Task(props) {
                         type="checkbox"
                         checked={props.data.isDone}
                         onChange={(e) => {
-                            let newTasks = taskContext.tasks
-                            newTasks[newTasks.findIndex((task) => task.key === props.data.key)].isDone = e.target.checked
-                            localStorage.setItem('tasks', JSON.stringify(newTasks))
-                            taskContext.setTasks(JSON.parse(localStorage.getItem('tasks')))
+                            let newTasks = taskContext.tasks;
+                            newTasks[newTasks.findIndex((task) => task.key === props.data.key)].isDone = e.target.checked;
+                            localStorage.setItem('tasks', JSON.stringify(newTasks));
+                            taskContext.setTasks(JSON.parse(localStorage.getItem('tasks')));
                         }} 
                     />
                 </form>

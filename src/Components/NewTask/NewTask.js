@@ -10,26 +10,34 @@ function NewTask() {
         isPinned: false,
         isDone: false,
         priority: '1'
-    })
+    });
     const onChange = (e) => {
         setTask({
             ...task,
             [e.target.name]: e.target.value,
             key: new Date()
-        })
+        });
     }
 
     const onSubmit = (e) => {
         e.preventDefault();
-        const newTasks = [...taskContext.tasks, task]
-        localStorage.setItem('tasks', JSON.stringify(newTasks))
-        taskContext.setTasks(JSON.parse(localStorage.getItem('tasks')))
+        const newTasks = [...taskContext.tasks, task];
+        localStorage.setItem('tasks', JSON.stringify(newTasks));
+        taskContext.setTasks(JSON.parse(localStorage.getItem('tasks')));
         e.target['title'].value = '';
     }
 
     return (
-        <form className={Styles.Form} onSubmit={onSubmit} onChange={onChange}>
-            <input type="text" name="title" placeholder="Enter your task here" />
+        <form 
+            className={Styles.Form} 
+            onSubmit={onSubmit} 
+            onChange={onChange}
+        >
+            <input 
+                type="text" 
+                name="title" 
+                placeholder="Enter your task here" 
+            />
             <select name="priority">
                 <option value="1">Low</option>
                 <option value="2">Medium</option>
