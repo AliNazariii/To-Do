@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Styles from './styles.module.scss';
+import NewTask from './Components/NewTask/NewTask';
+import Tasks from './Components/Tasks/Tasks';
+import TaskContext from './TaskContext';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	if (localStorage.getItem('tasks') === null) {
+		localStorage.setItem('tasks', JSON.stringify([
+			{'key': new Date(),'title': 'a task for tes.', 'isPinned': true, 'isDone': false, 'priority': 1}
+		]))
+	}
+	const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')))
+	return (
+		<div className={Styles.App}>
+			<div className={Styles.Layout}>
+				<TaskContext.Provider 
+					value={{
+						tasks: tasks, 
+						setTasks: setTasks
+					}}
+				>
+					<NewTask />
+					<Tasks />
+				</TaskContext.Provider>
+			</div>
+		</div>
+	);
 }
 
 export default App;
