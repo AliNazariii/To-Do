@@ -33,5 +33,25 @@
 }
 
 .RightBlock {
+    display: flex;
+    align-items: center;
+}
 
+.Priority {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #a62626;
+    height: 30px;
+    width: 55px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin: 0 10px 0 0;
+
+    h5 {
+        margin: 0px;
+        padding: 0px;
+        color: #ddd;
+        font-size: 12px;
+    }
 }

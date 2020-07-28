@@ -9,7 +9,7 @@ function NewTask() {
         title: null,
         isPinned: false,
         isDone: false,
-        priority: 1
+        priority: '1'
     })
     const onChange = (e) => {
         setTask({

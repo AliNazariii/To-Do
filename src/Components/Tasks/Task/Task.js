@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import Styles from './Task.module.scss';
 import TaskContext from '../../../TaskContext';
 
@@ -21,6 +21,9 @@ function Task(props) {
                 <h5>{props.data.title}</h5>
             </div>
             <div className={Styles.RightBlock}>
+                <div className={Styles.Priority}>
+                    <h5>{props.data.priority === '1' ? "Low" : props.data.priority === '2' ? "Medium" : "High"}</h5>
+                </div>
                 <form>
                     <input
                         name="isDone"

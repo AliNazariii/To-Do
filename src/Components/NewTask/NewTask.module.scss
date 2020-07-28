@@ -34,12 +34,15 @@ input[type=submit] {
     }
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 450px) {
     .Form {
         flex-direction: column;
     }
     input[type=submit] {
         flex-grow: 1;
+        margin: 5px 5px 0 5px;
+    }
+    select {
         margin: 5px 5px 0 5px;
     }
 }
