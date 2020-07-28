@@ -7,7 +7,7 @@ import TaskContext from './TaskContext';
 function App() {
 	if (localStorage.getItem('tasks') === null) {
 		localStorage.setItem('tasks', JSON.stringify([
-			{'key': new Date(),'title': 'a task for tes.', 'isPinned': true, 'isDone': false, 'priority': '1'}
+			{'key': new Date(),'title': 'a task for tes.', 'isPinned': true, 'isDone': false, 'priority': '1', 'color': '#ffffff'}
 		]))
 	}
 	const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')))
